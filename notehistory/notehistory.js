@@ -23,6 +23,7 @@ class NoteHistory {
         this._scale = this.setParam("scale", 1.0);
         this._max = this.setParam("max", 100);
         this._subBeatResolution = this.setParam("subBeatResolution", 1);
+        this._subBeatClasses = this.setParam("subBeatStyle", "bg-line-used").replace(/[ .{}]/g, "").trim();
 
         this._showCuts = this.setParam("showCuts", true);
         this._showCutBacks = this.setParam("showCutBacks", false);
@@ -34,8 +35,11 @@ class NoteHistory {
         
         this._scrollDirection = this.setParam("scrollDirection", "down");
         this._trackFromSpawn = this.setParam("trackFromSpawn", true);
-        this._addEmptyBeats = this.setParam("addEmptyBeats", false);
+        this._addEmptyBeats = this.setParam("addEmptyBeats", false) || this._trackFromSpawn;
         this._cutAreaPlacement = this.setParam("cutAreaPlacement", 0.3);
+
+        this._subBeatClasses = (this._subBeatClasses ? this._subBeatClasses.split(",") : []);
+        this._track.classList.add("saber" + (this._hand || "both").toLowerCase());
 
         this._songStart = null;
         this._songBPM = null;
@@ -53,7 +57,7 @@ class NoteHistory {
 
     setParam(name, def) {
         if (!this._params){
-            return undefined;
+            return def;
         }
         if (ALLOWED_PARAMS[name] && ALLOWED_PARAMS[name].indexOf(this._params.get(name)) < 0) {
             return def;
@@ -63,7 +67,7 @@ class NoteHistory {
         }
         let val = this._params.get(name);
         if (typeof def == "number") val = parseFloat(val);
-        if (typeof def == "boolean") val = (val == true || val == "true" || val == "1");
+        if (typeof def == "boolean") val = (val == "on"|| val == "true" || val == "yes" || val == "1");
         return val;
     }
 
@@ -74,7 +78,7 @@ class NoteHistory {
         this._noteTrack = [];
         this._notes = {};
         this._track.innerHTML = "";
-        this._track.classList.remove("on");
+        this._wraptrack.classList.remove("on");
     }
 
     getSubBeatElement(subbeat) {
@@ -85,6 +89,10 @@ class NoteHistory {
             element.id = "subbeat" + subbeat;
             element.innerHTML = '<div class="zoomer"></div>';
             element.className = "subbeat";
+
+            for (let anotherclass of this._subBeatClasses) {
+                element.classList.add(anotherclass);
+            }
 
             if (this._scrollDirection != "up" && this._scrollDirection != "left" && this._track.firstElementChild) {
                 this._track.insertBefore(element, this._track.firstElementChild);
@@ -245,13 +253,13 @@ class NoteHistory {
                 let [farStart, farEnd] = this.calculateNoteSlicePoints(data, 1);
 
                 if (this._showCutBacks) {
-                    if (!this.setSliceStyle(sliceback, this.noteCutToCssSlice(farStart, farEnd), backsource, 0.025)) {
+                    if (!this.setSliceStyle(sliceback, this.noteCutToCssSlice(farStart, farEnd), backsource, 0.03)) {
                         this.removeStickerFromNote(element, "slice back");
                     } else if (this._showCutSides) {
-                        if (!this.setSliceStyle(slicesidea, this.noteCutToCssSlice(nearStart, farStart), backsource, 0.015)) {
+                        if (!this.setSliceStyle(slicesidea, this.noteCutToCssSlice(nearStart, farStart), backsource, 0.02)) {
                             this.removeStickerFromNote(element, "slice sidea");
                         }
-                        if (!this.setSliceStyle(slicesideb, this.noteCutToCssSlice(nearEnd, farEnd), backsource, 0.015)) {
+                        if (!this.setSliceStyle(slicesideb, this.noteCutToCssSlice(nearEnd, farEnd), backsource, 0.02)) {
                             this.removeStickerFromNote(element, "slice sideb");
                         }
                     }
@@ -557,7 +565,7 @@ class NoteHistory {
         this._songPauseTime = null;
         this._realBeats = 0;
 
-        if (this._addEmptyBeats) {
+        if (this._addEmptyBeats && !this._testmode) {
             this._subBeatTimer = setInterval(function() {
                 this.getSubBeatElement(this.currentSubBeat());
                 this.scrollToCutArea();

@@ -27,14 +27,13 @@ body {
 
 .wraptrack.on { display: block; }
 
+/* Subbeats */
+
 .subbeat {
     position: relative;
     width: calc(112px * var(--scale));
     height: calc(88px * var(--scale));
     margin: 20px 0;
-}
-.subbeat.used {
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0 49.6%, rgba(128, 128, 128, 0.6) 49.6% 51.4%, rgba(255, 255, 255, 0) 51.4% 100%);
 }
 
 .zoomer {
@@ -42,6 +41,31 @@ body {
     transform-origin: bottom left;
     position: absolute;
     left: 0; bottom: 0;
+}
+
+.sabera .subbeat.edge-side, .sabera .subbeat.used.edge-side-used,
+.saberboth .subbeat.edge-side, .saberboth .subbeat.used.edge-side-used {
+    border-left: 2px solid rgba(160, 160, 160, 0.6);
+}
+.saberb .subbeat.edge-side, .saberb .subbeat.used.edge-side-used,
+.saberboth .subbeat.edge-side, .saberboth .subbeat.used.edge-side-used {
+    border-right: 2px solid rgba(160, 160, 160, 0.6);
+}
+
+.subbeat.edge-bottom {
+    border-bottom: 2px solid rgba(160, 160, 160, 0.6);
+}
+
+.subbeat.used.bg-line-used, .subbeat.bg-line {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0 49.6%, rgba(128, 128, 128, 0.6) 49.6% 51.4%, rgba(255, 255, 255, 0) 51.4% 100%);
+}
+
+.subbeat.used.bg-shade-used, .subbeat.bg-shade {
+    background: rgba(200, 200, 200, 0.4);
+}
+
+.subbeat.used.bg-gradient-used, .subbeat.bg-gradient {
+    background: linear-gradient(0deg, transparent 0% 10%, rgba(200, 200, 200, 0.4) 50%, transparent 90% 100%);
 }
 
 /* Note basics */
@@ -92,7 +116,7 @@ body {
 .noteb .color { background-color: var(--saberb-color); }
 
 .note .bad {
-    background: radial-gradient(circle at center, transparent 0, rgba(80, 80, 80, 0.8) 100%);
+    background: radial-gradient(circle at center, transparent 0, transparent 50%, rgba(80, 80, 80, 0.8) 100%);
     mask-image: url("icon/note_dir.png");
     mask-size: 40px 40px;
     -webkit-mask-image: url("icon/note_dir.png");

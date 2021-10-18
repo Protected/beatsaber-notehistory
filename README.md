@@ -24,7 +24,7 @@ Note that you may want to use multiple instances of this widget at the same time
 
 1. Add a new **Browser source** to your Scene.
 2. Fill in the **Source URL** (from the top of this page) including the settings you want (read below).
-3. Set the width and height. By default, the width should be __144 times SCALE__ where SCALE is the value of your `scale` setting (by default it's 1) and the height is whatever you want.
+3. Set the width and height. The width should be __144 times SCALE__ where SCALE is the value of your `scale` setting (by default it's 1) and the height is whatever you want.
 
 If you want to adjust the position of the source, add the `test=1` setting to the URL, position the source, then go to properties and remove it.
 
@@ -71,6 +71,24 @@ How to aggregate together notes that were played close in time.
 Note History displays notes together in **subbeats** in order to pack more information on the screen at the same time. A subbeat is a subdivision of a beat.
 
 Default value for the parameter is **1**, meaning all notes cut in the same beat will be displayed together. Increasing the value further subdivides the beat - for example, 4 means every subbeat is a quarter beat.
+
+### `subBeatStyle`
+
+A comma-separated list of premade styles to apply to **subbeats**. The default value for this parameter is **bg-line-used.** Background styles can't be combined.
+
+Possible values (the `-used` versions apply only to non-empty subbeats):
+
+* `edge-side` / `edge-side-used` : Marks subbeats with a vertical line along the outer side of the track (both sides if tracking both sabers).
+
+* `edge-bottom`: Marks each subbeat with a horizontal line along the bottom, dividing them visually.
+
+* `bg-line` / `bg-line-used` : Subbeats contain a horizontal line through the middle of the background.
+
+* `bg-shade` / `bg-shade-used` : Subbeat rectangles are fully shaded (darker than the surroundings).
+
+* `bg-gradient` / `bg-gradient-used` : Subbeat rectangles contain a horizontal gradient in the background.
+
+Leave this setting empty to remove all visual hinting for subbeats.
 
 ### `showCuts`
 
@@ -133,13 +151,13 @@ Set to false to only track notes from the moment of the cut.
 
 If set to true a timer is run during the song that adds every subbeat to the track, even if no notes were cut, making notes scroll away during breaks in the map (consistent scrolling).
 
-By default subbeats are only added when a note is cut or missed.
+This setting can only be changed if `trackFromSpawn` is false, in which case by default subbeats are only added when a note is cut or missed. Otherwise empty beats are always added.
 
 ### `cutAreaPlacement`
 
-A value between 0 (top of the track) and 1 (botton of the track). It represents roughly how far down the track incoming notes will be when the player cuts or misses them.
+A value between 0 (top of the track) and 1 (botton of the track). It represents roughly how far down the track incoming notes will be when the player misses them.
 
-The default is **0.3**, meaning cuts will appear roughly 30% down the track. This is calibrated for 1920x1080. If you play at very high resolutions you can probably decrease this value. It may be possible to increase it if you play at lower resolutions.
+The default is **0.3**, meaning misses/cuts will appear roughly 30% down the track. This is calibrated for 1920x1080. If you play at very high resolutions you can probably decrease this value. It may be possible to increase it if you play at lower resolutions.
 
 You can set this value to 0 if you don't want to use `trackFromSpawn`.
 
@@ -178,9 +196,21 @@ New `.subbeat` containers are appended or prepended when notes are spawned/cut/m
 
 Notes are discarded in accordance with the `max` setting. When the player is not in a map, `.track` is empty.
 
+### `.track` classes
+
+* `.sabera`: The track is tracking the left hand saber.
+
+* `.saberb`: The track is tracking the right hand saber.
+
+* `.saberboth`: The track contains information from both sabers.
+
+You can apply color-based styles to the track using `var(--sabera-color)` and `var(--saberb-color)`.
+
 ### `.subbeat` classes
 
 * `.used`: Notes have been added to the container. If this class is missing, the container was added as an empty container.
+
+* Style classes may have been passed from the settings (read about the `subBeatStyle` setting).
 
 ### `.note` classes
 
