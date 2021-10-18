@@ -42,11 +42,11 @@ If you need to change the `port`, make sure you also change it in the settings o
 
 ### `saber`
 
-Can be **A**, **B** or empty. The default is **B** (right hand saber).
+Can be **A**, **B** or empty. The default is empty.
 
 Sets which saber is being tracked by the widget. Everything sliced by that saber will be displayed, as well as missed notes with the color of that saber. If showAvoidedBombs is on, missed bombs on the side of that saber are also added.
 
-If set to empty, the widget will track both sabers at the same time.
+If set to empty, the widget will track both sabers at the same time and display everything.
 
 ### `test`
 
@@ -141,7 +141,7 @@ A value between 0 (top of the track) and 1 (botton of the track). It represents 
 
 The default is **0.3**, meaning cuts will appear roughly 30% down the track. This is calibrated for 1920x1080. If you play at very high resolutions you can probably decrease this value. It may be possible to increase it if you play at lower resolutions.
 
-You can set this value close to 0 if you don't want to use trackFromSpawn.
+You can set this value to 0 if you don't want to use `trackFromSpawn`.
 
 ### `prop`
 

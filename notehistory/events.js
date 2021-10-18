@@ -49,7 +49,6 @@ class Events {
     }
 
     noteCut(data) {
-        console.log(data.noteCut);
         this._widget.addNoteFromData(data.noteCut, data.time);
     }
 

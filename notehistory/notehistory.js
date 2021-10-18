@@ -18,7 +18,7 @@ class NoteHistory {
         this._track = document.getElementById("track");
         this._wraptrack = document.getElementById("wraptrack");  //For scrolling
 
-        this._hand = this.setParam("saber", "B");
+        this._hand = this.setParam("saber", "");
         this._testmode = this.setParam("test", false);
         this._scale = this.setParam("scale", 1.0);
         this._max = this.setParam("max", 100);
