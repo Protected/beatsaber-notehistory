@@ -36,6 +36,11 @@ class Events {
         this._widget.clear();
     }
 
+    websocketClose() {
+        this._widget.songStop();
+        this._widget.clear();
+    }
+
     pause() {
         this._widget.songPause();
     }

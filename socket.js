@@ -16,6 +16,12 @@ function connect(events) {
 
     socket.addEventListener("open", () => {
         console.log("WebSocket opened");
+
+        socket.addEventListener("close", () => {
+            if (events["websocketClose"]) {
+                events["websocketClose"].call(events);
+            }
+        });
     });
 
     socket.addEventListener("message", (message) => {
