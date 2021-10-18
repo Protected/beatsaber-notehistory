@@ -5,7 +5,7 @@ class Events {
     }
 
     hello(data) {
-        if (data.status.beatmap.start) {
+        if (data.status.beatmap && data.status.beatmap.start) {
             this._widget.setMapStyleFromData(data.status);
             this._widget.show();
             this._widget.songStart(data.status, data.status.beatmap.start);
