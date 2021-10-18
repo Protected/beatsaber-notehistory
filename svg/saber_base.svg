@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="188.33932mm"
+   height="7.038713mm"
+   viewBox="0 0 188.33932 7.038713"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="saber-base.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   inkscape:export-filename="C:\Projects\beatsaber-notetrack\icon\saber_base.png"
+   inkscape:export-xdpi="38.84"
+   inkscape:export-ydpi="38.84"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1"
+     inkscape:cx="257"
+     inkscape:cy="8.5"
+     inkscape:window-width="2560"
+     inkscape:window-height="1387"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2"
+     inkscape:snap-bbox="true" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="rect1225-5">
+      <path
+         style="color:#000000;fill:#ebebeb;-inkscape-stroke:none;paint-order:stroke markers fill"
+         d="m 184.83984,3 c 0.30295,0 0.5,0.1970545 0.5,0.5 0,0.3029455 -0.19705,0.5 -0.5,0.5 -219.909084,0.5185704 -148.779239,-1.1409935 0,-1 z"
+         id="path7193"
+         sodipodi:nodetypes="cscc" />
+      <path
+         style="color:#000000;fill:#646464;stroke-width:3.00001;-inkscape-stroke:none;paint-order:stroke markers fill"
+         d="M 32.320681,1.5207852 H 184.86012 c 1.09648,0 1.97921,0.8827298 1.97921,1.9792148 0,1.096485 -0.88273,1.9792148 -1.97921,1.9792148 H 32.320681 Z"
+         id="path7195"
+         sodipodi:nodetypes="ccsscc" />
+    </g>
+    <path
+       style="display:inline;color:#000000;fill:#646464;-inkscape-stroke:none;paint-order:stroke markers fill"
+       d="M 1.6597939,0 H 30.659794 V 7.0387125 H 1.6597939 Z"
+       id="rect1225" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline" />
+</svg>

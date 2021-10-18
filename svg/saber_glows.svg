@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="188.33932mm"
+   height="7.038713mm"
+   viewBox="0 0 188.33932 7.038713"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="saber_glows.svg"
+   inkscape:export-filename="C:\Projects\beatsaber-notehistory\icon\saber_glows.png"
+   inkscape:export-xdpi="38.84"
+   inkscape:export-ydpi="38.84"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.2399988"
+     inkscape:cx="177.82275"
+     inkscape:cy="-67.338775"
+     inkscape:window-width="2560"
+     inkscape:window-height="1387"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer2" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2">
+    <g
+       id="rect1225-5">
+      <path
+         id="path7193"
+         style="color:#000000;fill:#b4b4b4;stroke-width:3.77953;-inkscape-stroke:none;paint-order:stroke markers fill;fill-opacity:1"
+         d="M 115.87891,0 V 0.0078125 26.603516 h 6.27343 v -0.146485 h 576.45508 c 7.23046,0 13.22852,-5.998082 13.22852,-13.228515 C 711.83594,5.9980821 705.83788,0 698.60742,0 h -576.45508 -6.13086 z m 6.27343,11.337891 h 576.45508 c 1.14501,0 1.88867,0.745634 1.88867,1.890625 0,1.14499 -0.74366,1.888671 -1.88867,1.888672 H 122.15234 Z"
+         transform="scale(0.26458333)"
+         sodipodi:nodetypes="cccccsssccccssccc" />
+      <path
+         style="color:#000000;fill:#646464;stroke-width:3;-inkscape-stroke:none;paint-order:stroke markers fill"
+         d="m 30.697969,5.5 c -20.465313,-3.6666667 -10.232656,-1.8333333 0,0 z"
+         id="path7195"
+         sodipodi:nodetypes="cc" />
+    </g>
+    <rect
+       style="fill:#b4b4b4;fill-opacity:1;stroke:none;stroke-width:0.999993;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;stop-color:#000000"
+       id="rect1735"
+       width="1.6597936"
+       height="7.038713"
+       x="3.3245278e-09"
+       y="0" />
+  </g>
+</svg>

@@ -1,0 +1,301 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.wraptrack {
+    display: none;
+    height: 100%;
+    width: calc((112px + 16px * 2) * var(--scale));
+    position: relative;
+    overflow: hidden;
+}
+
+.track {
+    width: calc(112px * var(--scale));
+    padding: 0 calc(16px * var(--scale));
+    position: absolute;
+    overflow: hidden;
+
+    --goodsaber-color: rgba(255, 255, 255, 1);
+    --goodback-color: rgba(200, 200, 200, 0.8);
+    --bad-color: rgb(100, 100, 100);
+}
+
+.wraptrack.on { display: block; }
+
+.subbeat {
+    position: relative;
+    width: calc(112px * var(--scale));
+    height: calc(88px * var(--scale));
+    margin: 20px 0;
+}
+.subbeat.used {
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0 49.6%, rgba(128, 128, 128, 0.6) 49.6% 51.4%, rgba(255, 255, 255, 0) 51.4% 100%);
+}
+
+.zoomer {
+    transform: scale(var(--scale));
+    transform-origin: bottom left;
+    position: absolute;
+    left: 0; bottom: 0;
+}
+
+/* Note basics */
+
+.note {
+    position: absolute;
+    width: 40px; height: 40px;
+    background-size: 40px 40px;
+    background-image: url("icon/note_dir.png");
+    transform: rotate(var(--direction));
+    filter: opacity(var(--note-opacity));
+    --note-opacity: 100%;
+}
+.note.any {
+    background-image: url("icon/note_any.png");
+}
+.note.bomb {
+    background-image: url("icon/bomb.png");
+}
+
+.note > .sticker {
+    position: relative;
+    width: 100%; height: 100%;
+}
+.note > .sticker > div {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.note.stacking {
+    --note-opacity: 85%;
+}
+
+/* Stickers */
+
+.note .color {
+    mix-blend-mode: overlay;
+    mask-image: url("icon/note_dir.png");
+    mask-size: 40px 40px;
+    -webkit-mask-image: url("icon/note_dir.png");
+    -webkit-mask-size: 40px 40px;
+}
+.note.any .color {
+    mask-image: url("icon/note_any.png");
+    -webkit-mask-image: url("icon/note_any.png");
+}
+.notea .color { background-color: var(--sabera-color); }
+.noteb .color { background-color: var(--saberb-color); }
+
+.note .bad {
+    background: radial-gradient(circle at center, transparent 0, rgba(80, 80, 80, 0.8) 100%);
+    mask-image: url("icon/note_dir.png");
+    mask-size: 40px 40px;
+    -webkit-mask-image: url("icon/note_dir.png");
+    -webkit-mask-size: 40px 40px;
+}
+.note.any .bad {
+    mask-image: url("icon/note_any.png");
+    -webkit-mask-image: url("icon/note_any.png");
+}
+
+.note .perfect {
+    background-image: url("icon/note_hightlight.png");
+    background-size: 40px 40px;
+}
+
+.note .missed {
+    background: rgba(128, 128, 128, 0.5);
+    mask-image: url("icon/note_dir.png");
+    mask-size: 40px 40px;
+    -webkit-mask-image: url("icon/note_dir.png");
+    -webkit-mask-size: 40px 40px;
+}
+.note.any .missed {
+    mask-image: url("icon/note_any.png");
+    -webkit-mask-image: url("icon/note_any.png");
+}
+.note.bomb .missed {
+    mask-image: url("icon/bomb.png");
+    -webkit-mask-image: url("icon/bomb.png");
+}
+
+.note .wrong {
+    background-image: url("icon/wrong.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    transform: rotate(calc(-1 * var(--direction)));
+}
+
+.note .crosshair > .chleft, .note .crosshair > .chright {
+    position: absolute;
+    top: 17.5px; bottom: 17.5px;
+    left: 17.5px; right: 17.5px;
+}
+.note .crosshair > .chleft {
+    background: linear-gradient(45deg, transparent 0% 44%, yellow 44% 56%, transparent 56% 100%);
+}
+.note .crosshair > .chright {
+    background: linear-gradient(135deg, transparent 0% 44%, yellow 44% 56%, transparent 56% 100%);
+}
+
+/* Slice */
+
+/* Inputs:
+    --slice-x --slice-y ([0-1])
+    --slice-length ([0-1])
+    --slice-angle (deg) : 0 is down
+    --slice-color
+    --slice-width (%)
+    --slice-trigap : set to 0 if the line has no arrow point
+*/
+.note .slice {
+    --slice-width: 5%;
+    --slice-trigap: 5px;
+}
+
+.note .slice > .anchor {
+    position: absolute;
+    height: calc(var(--slice-length) * 100%);
+    left: calc(var(--slice-width) / -2);
+    width: var(--slice-width);
+    transform-origin: top;
+    transform: translate(calc(var(--slice-x) * 40px), calc(var(--slice-y) * 40px))
+        rotate(var(--slice-angle));
+}
+
+.note .slice > .anchor > .trunk {
+    position: absolute;
+    top: 0; height: calc(100% - var(--slice-trigap));
+    width: 100%;
+    background-color: var(--slice-color);
+    animation: flash-slice-trunk 1s linear forwards;
+}
+
+.note .slice > .anchor > .tri {
+    position: absolute;
+    width: 0; height: 0;
+    left: -4px;
+    bottom: 0px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--slice-color);
+    animation: flash-slice-tri 1s linear forwards;
+}
+
+.notea.note .slice .trunk { background-color: var(--sabera-color); }
+.noteb.note .slice .trunk { background-color: var(--saberb-color); }
+
+.notea.note .slice .tri { border-top: 6px solid var(--sabera-color); }
+.noteb.note .slice .tri { border-top: 6px solid var(--saberb-color); }
+
+/* Note positions */
+
+.note.layer0 { bottom: 0; }
+.note.layer1 { bottom: 24px; }
+.note.layer2 { bottom: 48px; }
+
+.note.line0 { left: 0; }
+.note.line1 { left: 24px; }
+.note.line2 { left: 48px; }
+.note.line3 { left: 72px; }
+
+/* Note directions */
+
+.note { --direction: 0deg; }
+.note.downleft { --direction: 45deg; }
+.note.left { --direction: 90deg; }
+.note.upleft { --direction: 135deg; }
+.note.up { --direction: 180deg; }
+.note.upright { --direction: 225deg; }
+.note.right { --direction: 270deg; }
+.note.downright { --direction: 315deg; }
+
+/* Note quality */
+
+.note.bad {
+    filter: opacity(var(--note-opacity)) drop-shadow(0 0 2px var(--bad-color));
+}
+
+.notea.note.good {
+    filter: opacity(var(--note-opacity)) drop-shadow(0 0 10px var(--sabera-color));
+}
+
+.noteb.note.good {
+    filter: opacity(var(--note-opacity)) drop-shadow(0 0 10px var(--saberb-color));
+}
+
+/* Sabers */
+
+.saber {
+    display: none;
+    width: calc(150px * var(--scale));
+    height: calc(8px * var(--scale));
+    margin: 6px;
+}
+
+.saber > .sticker {
+    position: relative;
+    width: 100%; height: 100%;
+}
+.saber > .sticker > div {
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.saber .base {
+    background-size: calc(150px * var(--scale)) calc(8px * var(--scale));
+    background-image: url("icon/saber_base.png");
+}
+
+.saber .glow {
+    background-size: calc(150px * var(--scale)) calc(8px * var(--scale));
+    background-image: url("icon/saber_glows.png");
+}
+
+.saber .color {
+    mix-blend-mode: overlay;
+    mask-image: url("icon/saber.png");
+    mask-size: calc(150px * var(--scale)) calc(8px * var(--scale));
+    -webkit-mask-image: url("icon/saber.png");
+    -webkit-mask-size: calc(150px * var(--scale)) calc(8px * var(--scale));
+}
+
+.saber.on { display: block; }
+
+.sabera .glow { filter: drop-shadow(0 0 4px var(--sabera-color)) brightness(120%) saturate(120%); }
+.sabera .color { background-color: var(--sabera-color); }
+
+.saberb .glow { filter: drop-shadow(0 0 4px var(--saberb-color)) brightness(120%) saturate(120%); }
+.saberb .color { background-color: var(--saberb-color); }
+
+.saber.flash {
+    animation: flash-saber 0.5s;
+}
+
+/* Slash animations */
+
+@keyframes flash-slice-trunk {
+    20% { background-color: orange; }
+    40% { background-color: white; }
+    60% { background-color: yellow; }
+    to { background-color: var(--slice-color); }
+}
+
+@keyframes flash-slice-tri {
+    20% { border-top-color: orange; }
+    40% { border-top-color: white; }
+    60% { border-top-color: yellow; }
+    to { border-top-color: var(--slice-color); }
+}
+
+@keyframes flash-saber {
+    20% { filter: brightness(120%) saturate(120%); }
+    40% { filter: brightness(150%) saturate(120%); }
+    60% { filter: brightness(120%) saturate(120%); }
+}
